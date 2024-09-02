@@ -8,5 +8,5 @@
 - [ ] Add Footer (?)
 
 ## Frameworks and Libraries
+[DaisyUI](https://daisyui.com/)  
 [TailwindCSS](https://tailwindcss.com/)
-[DaisyUI](https://daisyui.com/)
