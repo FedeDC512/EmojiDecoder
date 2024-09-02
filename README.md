@@ -6,6 +6,7 @@
 - [ ] Fix Header (add links)
 - [ ] Fix Background (theme?)
 - [ ] Add Footer (?)
+- [ ] Add page name and icon
 
 ## Frameworks and Libraries
 [DaisyUI](https://daisyui.com/)  
