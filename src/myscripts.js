@@ -1,3 +1,18 @@
+const themeToggle = document.getElementById('theme-toggle');
+
+function loadSystemTheme() {
+    const prefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
+    document.documentElement.setAttribute('data-theme', prefersDark ? 'dark' : 'light');
+    themeToggle.checked = prefersDark;
+}
+
+loadSystemTheme();
+  
+themeToggle.addEventListener('change', function() {
+  const theme = this.checked ? 'dark' : 'light';
+  document.documentElement.setAttribute('data-theme', theme);
+});
+
 function copyText() {
     let inputText = document.getElementById('textInput').value;
     document.getElementById('displayText').innerText = inputText;

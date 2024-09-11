@@ -3,8 +3,8 @@
 ### To Do:
 - [ ] Explore emoji-regex
 - [ ] Fix the isEmoji check
-- [ ] Fix Header (add links)
-- [ ] Fix Background (theme?)
+- [x] Fix Header (add links)
+- [x] Fix Background (theme?)
 - [ ] Add Footer (?)
 - [ ] Add page name and icon
 
