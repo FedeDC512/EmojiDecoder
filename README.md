@@ -1,13 +1,13 @@
 # EmojiDecoder
 
 ### To Do:
-- [ ] Fix the isEmoji check
+- [x] Fix the isEmoji check
 - [ ] Add Footer (?)
 - [x] Fix Header (add links)
 - [x] Fix Background (theme?)
 - [x] Add page name and icon
 - [ ] Made the info table width static
-- [ ] Add emoji decription in the info table
+- [x] Add emoji decription in the info table
 - [ ] [zero-width-joiner](https://emojipedia.org/zero-width-joiner)
 - [ ] [U+FE0E and U+FE0F](https://stackoverflow.com/questions/38100329/what-does-u-ufe0f-in-an-emoji-mean-is-it-the-same-if-i-delete-it)
 

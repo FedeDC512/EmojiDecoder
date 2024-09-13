@@ -14,6 +14,27 @@ themeToggle.addEventListener('change', function() {
 });
 
 let zwjEmojis = [];
+let emojiData = new Map();
+
+async function loadEmojiData() {
+    if (emojiData.size > 0) return;
+
+    const response = await fetch('unicode/emoji-test.txt');
+    const text = await response.text();
+
+    // Filters lines that do not begin with # and extracts emoji and description
+    const lines = text.split('\n').filter(line => !line.startsWith('#') && line.trim() !== '');
+    lines.forEach(line => {
+        const [codePointPart, qualifierPart] = line.split(';').map(part => part.trim());
+        const descriptionSection = line.split('#')[1]?.trim();
+        const emoji = String.fromCodePoint(parseInt(codePointPart, 16));
+        if (descriptionSection) {
+            const descriptionParts = descriptionSection.split(' ');
+            const description = descriptionParts.slice(2).join(' ');  // Skips the emoji and version (E1.0)
+            emojiData.set(emoji, description);
+        }
+    });
+}
 
 async function loadZwjEmojis() {
     if (zwjEmojis.length > 0) return
@@ -37,37 +58,42 @@ async function randomEmoji() {
     copyText();
 }
 
-window.onload = loadEmojis;
+async function loadAllEmojis() {
+    loadZwjEmojis();
+    loadEmojiData();
+}
+
+window.onload = loadAllEmojis();
 
 function copyText() {
     let inputText = document.getElementById('textInput').value;
-    document.getElementById('displayText').innerText = inputText;
+    document.getElementById('displayText').innerText = "Your Text: " + inputText;
+    if (emojiData.has(inputText) || zwjEmojis.includes(inputText)){
+        document.getElementById('displayText').innerText = "Your Emoji: " + inputText;
+    }
 
     const resultElement = document.getElementById('result');
-    const debugText = document.getElementById('debugText');
+    //const debugText = document.getElementById('debugText');
 
-    let isTextEmoji = isEmoji(inputText) ? 'is' : 'is not';
-    let textUniCode = getUniCode(inputText);
+    //let textUniCode = getUniCode(inputText);
     let analyzedEmoji = analyzeEmoji(inputText);
 
-    debugText.innerText = `"${inputText}" ${isTextEmoji} an emoji.\nLength: ${inputText.length}.\nUnicode: ${textUniCode}\n`;
+    //debugText.innerText = `"Debug: ${inputText}" ${isTextEmoji} an emoji.\nLength: ${inputText.length}.\nUnicode: ${textUniCode}\n${JSON.stringify(emojiData)}`;
 
     let count = 1;
     resultElement.innerHTML = "";
     for (const [key, value] of Object.entries(analyzedEmoji)) {
+        let description = emojiData.get(key) || 'No description available';
+
         resultElement.innerHTML += `<tr>
                 <th>${count}</th>
                 <th>${key}</th>
                 <td>${value}</td>
+                <td>${description}</td>
               <tr>`
         count++;
     }
 
-}
-
-function isEmoji(text) {
-    const emojiRegex = /^[\p{Emoji_Presentation}\p{Extended_Pictographic}]{1}$/u;
-    return emojiRegex.test(text);
 }
 
 function getUniCode(text) {
