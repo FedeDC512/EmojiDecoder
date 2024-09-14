@@ -73,22 +73,33 @@ function copyText() {
     }
 
     const resultElement = document.getElementById('result');
-    //const debugText = document.getElementById('debugText');
+    const debugText = document.getElementById('debugText');
 
-    //let textUniCode = getUniCode(inputText);
+    let textUniCode = getUniCode(inputText);
     let analyzedEmoji = analyzeEmoji(inputText);
 
     //debugText.innerText = `"Debug: ${inputText}" ${isTextEmoji} an emoji.\nLength: ${inputText.length}.\nUnicode: ${textUniCode}\n${JSON.stringify(emojiData)}`;
+    debugText.innerText = `Debug: ${textUniCode}`;
 
     let count = 1;
     resultElement.innerHTML = "";
     for (const [key, value] of Object.entries(analyzedEmoji)) {
-        let description = emojiData.get(key) || 'No description available';
+        let description = emojiData.get(value) || 'no description available';
+        if (getUniCode(value) === 'U+200D') {
+            description = 'zero-width joiner';
+        } else if (getUniCode(value) === 'U+FE0F') {
+            description = 'variation selector-16';
+        } else if (getUniCode(value) === 'U+FE0E') {
+            description = 'variation selector-15';
+        }
+
+        description = description.charAt(0).toUpperCase() + description.slice(1);
+        console.log(`${key}: ${value} - ${description}`);
 
         resultElement.innerHTML += `<tr>
-                <th>${count}</th>
                 <th>${key}</th>
-                <td>${value}</td>
+                <th>${value}</th>
+                <td>${getUniCode(value)}</td>
                 <td>${description}</td>
               <tr>`
         count++;
@@ -108,9 +119,11 @@ function getUniCode(text) {
 function analyzeEmoji(emojiText) {
     const characters = Array.from(emojiText);
 
+    let count = 1;
     const characterMap = characters.reduce((map, char) => {
-        const codePoint = char.codePointAt(0).toString(16).toUpperCase();
-        map[char] = `U+${codePoint.padStart(4, '0')}`;
+        //const codePoint = char.codePointAt(0).toString(16).toUpperCase();
+        map[count] = char;
+        count++;
         return map;
     }, {});
 

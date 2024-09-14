@@ -1,15 +1,6 @@
 # EmojiDecoder
 
-### To Do:
-- [x] Fix the isEmoji check
-- [ ] Add Footer (?)
-- [x] Fix Header (add links)
-- [x] Fix Background (theme?)
-- [x] Add page name and icon
-- [ ] Made the info table width static
-- [x] Add emoji decription in the info table
-- [ ] [zero-width-joiner](https://emojipedia.org/zero-width-joiner)
-- [ ] [U+FE0E and U+FE0F](https://stackoverflow.com/questions/38100329/what-does-u-ufe0f-in-an-emoji-mean-is-it-the-same-if-i-delete-it)
+**EmojiDecoder** is a simple web app that allows users to input and decode emojis into their corresponding Unicode representations and descriptions. It also features a random emoji generator and supports both light and dark themes.
 
 ## Frameworks and Libraries
 [DaisyUI](https://daisyui.com/)  
@@ -34,3 +25,15 @@ For additional information on copyright, visit [Unicode's Copyright Page](https:
 
 Emoji data files are provided by [The Unicode Consortium](https://unicode.org). This project uses Unicode Data Files as permitted under the Unicode License v3. More information can be found on Unicode's [Copyright Page](https://www.unicode.org/copyright.html).
 -->
+
+## To Do:
+- [x] Fix the isEmoji check
+- [ ] Add Footer
+- [x] Fix Header (add links)
+- [x] Fix Background (theme?)
+- [x] Add page name and icon
+- [ ] Make the info table width static
+- [x] Add emoji decription in the info table
+- [x] zero-width-joiner
+- [ ] Bug with emoji info 🫱🏾‍🫲🏽
+- [ ] [U+FE0E and U+FE0F](https://stackoverflow.com/questions/38100329/what-does-u-ufe0f-in-an-emoji-mean-is-it-the-same-if-i-delete-it)
