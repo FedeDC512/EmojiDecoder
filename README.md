@@ -1,7 +1,7 @@
 # EmojiDecoder
 
 **EmojiDecoder** is a simple web app that allows users to input and decode emojis into their corresponding Unicode representations and descriptions. It also features a random emoji generator and supports both light and dark themes.
-uso UTF16
+<!-- uso UTF16 -->
 
 ## Frameworks and Libraries
 [DaisyUI](https://daisyui.com/)  

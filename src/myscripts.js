@@ -118,7 +118,7 @@ function copyText() {
 
         resultElement.innerHTML += `<tr>
                 <th>${key}</th>
-                <th class="text-lg">${value}</th>
+                <th class="text-lg text-center">${value}</th>
                 <td>${getUniCode(value)}</td>
                 <td class="flex gap-2 items-center">${description}</td>
               <tr>`
