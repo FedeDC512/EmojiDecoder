@@ -24,10 +24,12 @@ async function loadEmojiData() {
 
     // Filters lines that do not begin with # and extracts emoji and description
     const lines = text.split('\n').filter(line => !line.startsWith('#') && line.trim() !== '');
+    
     lines.forEach(line => {
         const [codePointPart, qualifierPart] = line.split(';').map(part => part.trim());
         const descriptionSection = line.split('#')[1]?.trim();
-        const emoji = String.fromCodePoint(parseInt(codePointPart, 16));
+        const codePoints = codePointPart.split(' ').map(code => parseInt(code, 16));
+        const emoji = String.fromCodePoint(...codePoints);
         if (descriptionSection) {
             const descriptionParts = descriptionSection.split(' ');
             const description = descriptionParts.slice(2).join(' ');  // Skips the emoji and version (E1.0)
@@ -86,11 +88,20 @@ function copyText() {
     for (const [key, value] of Object.entries(analyzedEmoji)) {
         let description = emojiData.get(value) || 'no description available';
         if (getUniCode(value) === 'U+200D') {
-            description = 'zero-width joiner';
+            description = `invisible joiner (ZWJ)
+            <a href="https://en.wikipedia.org/wiki/Zero-width_joiner" target="_blank">
+                <svg xmlns="http://www.w3.org/2000/svg" width="1em" height="1em" viewBox="0 0 24 24"><g fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"><circle cx="12" cy="12" r="10"/><path d="M12 16v-4m0-4h.01"/></g></svg>
+            </a>`;
         } else if (getUniCode(value) === 'U+FE0F') {
-            description = 'variation selector-16';
+            description = `emoji display modifier (VS16)
+            <a href="https://en.wikipedia.org/wiki/Variation_Selectors_(Unicode_block)" target="_blank">
+                <svg xmlns="http://www.w3.org/2000/svg" width="1em" height="1em" viewBox="0 0 24 24"><g fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"><circle cx="12" cy="12" r="10"/><path d="M12 16v-4m0-4h.01"/></g></svg>
+            </a>`;
         } else if (getUniCode(value) === 'U+FE0E') {
-            description = 'variation selector-15';
+            description = `text display modifier (VS15)
+            <a href="https://en.wikipedia.org/wiki/Variation_Selectors_(Unicode_block)" target="_blank">
+                <svg xmlns="http://www.w3.org/2000/svg" width="1em" height="1em" viewBox="0 0 24 24"><g fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"><circle cx="12" cy="12" r="10"/><path d="M12 16v-4m0-4h.01"/></g></svg>
+            </a>`;
         }
 
         description = description.charAt(0).toUpperCase() + description.slice(1);
@@ -100,7 +111,7 @@ function copyText() {
                 <th>${key}</th>
                 <th>${value}</th>
                 <td>${getUniCode(value)}</td>
-                <td>${description}</td>
+                <td class="flex gap-2">${description}</td>
               <tr>`
         count++;
     }

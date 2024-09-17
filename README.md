@@ -35,5 +35,6 @@ Emoji data files are provided by [The Unicode Consortium](https://unicode.org). 
 - [ ] Make the info table width static
 - [x] Add emoji decription in the info table
 - [x] zero-width-joiner
-- [ ] Bug with emoji info 🫱🏾‍🫲🏽
-- [ ] [U+FE0E and U+FE0F](https://stackoverflow.com/questions/38100329/what-does-u-ufe0f-in-an-emoji-mean-is-it-the-same-if-i-delete-it)
+- [x] Bug with emoji info 🫱🏾‍🫲🏽
+- [x] [U+FE0E and U+FE0F](https://stackoverflow.com/questions/38100329/what-does-u-ufe0f-in-an-emoji-mean-is-it-the-same-if-i-delete-it
+https://stackoverflow.com/questions/4974668/what-is-the-unicode-variation-selector)
