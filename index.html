@@ -1,90 +1,90 @@
 <!doctype html>
 <html>
+
 <head>
   <meta charset="UTF-8">
   <title>EmojiDecoder</title>
   <link rel="icon" type="image/png" href="images/icon.png">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <link href="./src/output.css" rel="stylesheet">
-  <script src="./src/myscripts.js"  defer></script>
+  <script src="./src/myscripts.js" async></script>
 </head>
-<body>
 
-    <div class="navbar bg-base-100">
+<body class="transition-colors">
 
-        <div class="flex-none">
-          <a href="https://github.com/FedeDC512/EmojiDecoder" target="_blank">
-            <button class="btn btn-circle btn-ghost">
-              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path fill="currentColor" d="M12 2A10 10 0 0 0 2 12c0 4.42 2.87 8.17 6.84 9.5c.5.08.66-.23.66-.5v-1.69c-2.77.6-3.36-1.34-3.36-1.34c-.46-1.16-1.11-1.47-1.11-1.47c-.91-.62.07-.6.07-.6c1 .07 1.53 1.03 1.53 1.03c.87 1.52 2.34 1.07 2.91.83c.09-.65.35-1.09.63-1.34c-2.22-.25-4.55-1.11-4.55-4.92c0-1.11.38-2 1.03-2.71c-.1-.25-.45-1.29.1-2.64c0 0 .84-.27 2.75 1.02c.79-.22 1.65-.33 2.5-.33s1.71.11 2.5.33c1.91-1.29 2.75-1.02 2.75-1.02c.55 1.35.2 2.39.1 2.64c.65.71 1.03 1.6 1.03 2.71c0 3.82-2.34 4.66-4.57 4.91c.36.31.69.92.69 1.85V21c0 .27.16.59.67.5C19.14 20.16 22 16.42 22 12A10 10 0 0 0 12 2"/></svg>
-            </button>
-          </a>
-        </div>
+  <div class="navbar bg-base-100">
 
-        <div class="flex-1">
-          <a class="font-semibold px-4 content-center justify-center text-xl">EmojiDecoder</a>
-        </div>
-
-        <label class="swap swap-rotate">
-          <!-- this hidden checkbox controls the state -->
-          <input type="checkbox" class="theme-controller"  id="theme-toggle" />
-        
-          <!-- sun icon -->
-          <svg
-            class="swap-off h-9 w-9 fill-current"
-            xmlns="http://www.w3.org/2000/svg"
-            viewBox="0 0 24 24">
-            <path
-              d="M5.64,17l-.71.71a1,1,0,0,0,0,1.41,1,1,0,0,0,1.41,0l.71-.71A1,1,0,0,0,5.64,17ZM5,12a1,1,0,0,0-1-1H3a1,1,0,0,0,0,2H4A1,1,0,0,0,5,12Zm7-7a1,1,0,0,0,1-1V3a1,1,0,0,0-2,0V4A1,1,0,0,0,12,5ZM5.64,7.05a1,1,0,0,0,.7.29,1,1,0,0,0,.71-.29,1,1,0,0,0,0-1.41l-.71-.71A1,1,0,0,0,4.93,6.34Zm12,.29a1,1,0,0,0,.7-.29l.71-.71a1,1,0,1,0-1.41-1.41L17,5.64a1,1,0,0,0,0,1.41A1,1,0,0,0,17.66,7.34ZM21,11H20a1,1,0,0,0,0,2h1a1,1,0,0,0,0-2Zm-9,8a1,1,0,0,0-1,1v1a1,1,0,0,0,2,0V20A1,1,0,0,0,12,19ZM18.36,17A1,1,0,0,0,17,18.36l.71.71a1,1,0,0,0,1.41,0,1,1,0,0,0,0-1.41ZM12,6.5A5.5,5.5,0,1,0,17.5,12,5.51,5.51,0,0,0,12,6.5Zm0,9A3.5,3.5,0,1,1,15.5,12,3.5,3.5,0,0,1,12,15.5Z" />
+    <div class="flex-none">
+      <a href="https://github.com/FedeDC512/EmojiDecoder" target="_blank">
+        <button class="btn btn-circle btn-ghost">
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+            <path fill="currentColor"
+              d="M12 2A10 10 0 0 0 2 12c0 4.42 2.87 8.17 6.84 9.5c.5.08.66-.23.66-.5v-1.69c-2.77.6-3.36-1.34-3.36-1.34c-.46-1.16-1.11-1.47-1.11-1.47c-.91-.62.07-.6.07-.6c1 .07 1.53 1.03 1.53 1.03c.87 1.52 2.34 1.07 2.91.83c.09-.65.35-1.09.63-1.34c-2.22-.25-4.55-1.11-4.55-4.92c0-1.11.38-2 1.03-2.71c-.1-.25-.45-1.29.1-2.64c0 0 .84-.27 2.75 1.02c.79-.22 1.65-.33 2.5-.33s1.71.11 2.5.33c1.91-1.29 2.75-1.02 2.75-1.02c.55 1.35.2 2.39.1 2.64c.65.71 1.03 1.6 1.03 2.71c0 3.82-2.34 4.66-4.57 4.91c.36.31.69.92.69 1.85V21c0 .27.16.59.67.5C19.14 20.16 22 16.42 22 12A10 10 0 0 0 12 2" />
           </svg>
-        
-          <!-- moon icon -->
-          <svg
-            class="swap-on h-9 w-9 fill-current"
-            xmlns="http://www.w3.org/2000/svg"
-            viewBox="0 0 24 24">
-            <path
-              d="M21.64,13a1,1,0,0,0-1.05-.14,8.05,8.05,0,0,1-3.37.73A8.15,8.15,0,0,1,9.08,5.49a8.59,8.59,0,0,1,.25-2A1,1,0,0,0,8,2.36,10.14,10.14,0,1,0,22,14.05,1,1,0,0,0,21.64,13Zm-9.5,6.69A8.14,8.14,0,0,1,7.08,5.22v.27A10.15,10.15,0,0,0,17.22,15.63a9.79,9.79,0,0,0,2.1-.22A8.11,8.11,0,0,1,12.14,19.73Z" />
-          </svg>
-        </label>
-        
+        </button>
+      </a>
     </div>
 
-    <div class="flex flex-col justify-center items-center gap-4">
-        <label class="form-control w-full max-w-xs mx-auto">
-        <div class="label">
-            <span class="label-text">Which emoji do you want to decode?</span>
-        </div>
-        <div class="flex flex-row gap-4">
-          <input type="text" id="textInput" placeholder="Put the emoji here" class="input input-bordered w-full max-w-xs" />
-          <button onclick="randomEmoji()" class="btn btn-active btn-primary">
-            <svg xmlns="http://www.w3.org/2000/svg" width="1.13em" height="1em" viewBox="0 0 1792 1600"><path fill="currentColor" d="M666 449q-60 92-137 273q-22-45-37-72.5T451.5 586t-51-56.5t-63-35T256 480H32q-14 0-23-9t-9-23V256q0-14 9-23t23-9h224q250 0 410 225m1126 799q0 14-9 23l-320 320q-9 9-23 9q-13 0-22.5-9.5t-9.5-22.5v-192q-32 0-85 .5t-81 1t-73-1t-71-5t-64-10.5t-63-18.5t-58-28.5t-59-40t-55-53.5t-56-69.5q59-93 136-273q22 45 37 72.5t40.5 63.5t51 56.5t63 35t81.5 14.5h256V928q0-14 9-23t23-9q12 0 24 10l319 319q9 9 9 23m0-896q0 14-9 23l-320 320q-9 9-23 9q-13 0-22.5-9.5T1408 672V480h-256q-48 0-87 15t-69 45t-51 61.5t-45 77.5q-32 62-78 171q-29 66-49.5 111t-54 105t-64 100t-74 83t-90 68.5t-106.5 42t-128 16.5H32q-14 0-23-9t-9-23v-192q0-14 9-23t23-9h224q48 0 87-15t69-45t51-61.5t45-77.5q32-62 78-171q29-66 49.5-111t54-105t64-100t74-83t90-68.5t106.5-42t128-16.5h256V32q0-14 9-23t23-9q12 0 24 10l319 319q9 9 9 23"/></svg>
-          </button>
-        </div>
-        </label>
-        
-        <div>
-            <button onclick="copyText()" class="btn btn-active btn-primary">Decode</button>
-        </div>
-
-        <p><span id="displayText"></span></p>
-
-        <p><span id="debugText"></span></p> 
-
-        <div class="overflow-x-auto">
-          <table class="table">
-            <thead>
-              <tr>
-                <th></th>
-                <th>Emoji</th>
-                <th>Unicode</th>
-                <th>Description</th>
-              </tr>
-            </thead>
-              <tbody id="result">
-              </tbody>
-            </table>
-        </div>
+    <div class="flex-1">
+      <a class="font-semibold px-4 content-center justify-center text-xl">EmojiDecoder</a>
     </div>
 
-  </body>
+    <label class="swap swap-rotate">
+
+      <input type="checkbox" class="theme-controller" id="theme-toggle" />
+
+      <svg class="swap-off h-9 w-9 fill-current" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+        <path
+          d="M5.64,17l-.71.71a1,1,0,0,0,0,1.41,1,1,0,0,0,1.41,0l.71-.71A1,1,0,0,0,5.64,17ZM5,12a1,1,0,0,0-1-1H3a1,1,0,0,0,0,2H4A1,1,0,0,0,5,12Zm7-7a1,1,0,0,0,1-1V3a1,1,0,0,0-2,0V4A1,1,0,0,0,12,5ZM5.64,7.05a1,1,0,0,0,.7.29,1,1,0,0,0,.71-.29,1,1,0,0,0,0-1.41l-.71-.71A1,1,0,0,0,4.93,6.34Zm12,.29a1,1,0,0,0,.7-.29l.71-.71a1,1,0,1,0-1.41-1.41L17,5.64a1,1,0,0,0,0,1.41A1,1,0,0,0,17.66,7.34ZM21,11H20a1,1,0,0,0,0,2h1a1,1,0,0,0,0-2Zm-9,8a1,1,0,0,0-1,1v1a1,1,0,0,0,2,0V20A1,1,0,0,0,12,19ZM18.36,17A1,1,0,0,0,17,18.36l.71.71a1,1,0,0,0,1.41,0,1,1,0,0,0,0-1.41ZM12,6.5A5.5,5.5,0,1,0,17.5,12,5.51,5.51,0,0,0,12,6.5Zm0,9A3.5,3.5,0,1,1,15.5,12,3.5,3.5,0,0,1,12,15.5Z" />
+      </svg>
+
+      <svg class="swap-on h-9 w-9 fill-current" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+        <path
+          d="M21.64,13a1,1,0,0,0-1.05-.14,8.05,8.05,0,0,1-3.37.73A8.15,8.15,0,0,1,9.08,5.49a8.59,8.59,0,0,1,.25-2A1,1,0,0,0,8,2.36,10.14,10.14,0,1,0,22,14.05,1,1,0,0,0,21.64,13Zm-9.5,6.69A8.14,8.14,0,0,1,7.08,5.22v.27A10.15,10.15,0,0,0,17.22,15.63a9.79,9.79,0,0,0,2.1-.22A8.11,8.11,0,0,1,12.14,19.73Z" />
+      </svg>
+    </label>
+
+  </div>
+
+  <div class="flex flex-col justify-center items-center gap-4">
+    <label class="form-control w-full max-w-xs mx-auto">
+      <div class="label">
+        <span class="label-text">Which emoji do you want to decode?</span>
+      </div>
+      <div class="flex flex-row gap-4">
+        <input type="text" id="textInput" placeholder="Put the emoji here"
+          class="input input-bordered w-full max-w-xs" />
+        <button onclick="randomEmoji()" class="btn btn-active btn-primary">
+          <svg xmlns="http://www.w3.org/2000/svg" width="1.13em" height="1em" viewBox="0 0 1792 1600">
+            <path fill="currentColor"
+              d="M666 449q-60 92-137 273q-22-45-37-72.5T451.5 586t-51-56.5t-63-35T256 480H32q-14 0-23-9t-9-23V256q0-14 9-23t23-9h224q250 0 410 225m1126 799q0 14-9 23l-320 320q-9 9-23 9q-13 0-22.5-9.5t-9.5-22.5v-192q-32 0-85 .5t-81 1t-73-1t-71-5t-64-10.5t-63-18.5t-58-28.5t-59-40t-55-53.5t-56-69.5q59-93 136-273q22 45 37 72.5t40.5 63.5t51 56.5t63 35t81.5 14.5h256V928q0-14 9-23t23-9q12 0 24 10l319 319q9 9 9 23m0-896q0 14-9 23l-320 320q-9 9-23 9q-13 0-22.5-9.5T1408 672V480h-256q-48 0-87 15t-69 45t-51 61.5t-45 77.5q-32 62-78 171q-29 66-49.5 111t-54 105t-64 100t-74 83t-90 68.5t-106.5 42t-128 16.5H32q-14 0-23-9t-9-23v-192q0-14 9-23t23-9h224q48 0 87-15t69-45t51-61.5t45-77.5q32-62 78-171q29-66 49.5-111t54-105t64-100t74-83t90-68.5t106.5-42t128-16.5h256V32q0-14 9-23t23-9q12 0 24 10l319 319q9 9 9 23" />
+          </svg>
+        </button>
+      </div>
+    </label>
+
+    <button onclick="copyText()" class="btn btn-active btn-primary" id="decodeButton" disabled>Decode</button>
+
+    <p id="displayText" class="text-center"></p>
+
+    <p id="descriptionText" class="text-center"></p>
+
+    <div id="dataTable" class="overflow-x-auto bg-base-200 rounded-lg hidden">
+      <table class="table">
+        <thead>
+          <tr class="bg-base-300">
+            <th class="w-8 text-base-content text-center"></th>
+            <th class="w-8 text-base-content text-center">Emoji</th>
+            <th class="w-24 text-base-content text-center">Unicode</th>
+            <th class="w-64 text-base-content text-center">Description</th>
+          </tr>
+        </thead>
+        <tbody id="result">
+        </tbody>
+      </table>
+    </div>
+  </div>
+
+</body>
+
 </html>

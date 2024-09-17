@@ -1,20 +1,31 @@
 const themeToggle = document.getElementById('theme-toggle');
+const resultElement = document.getElementById('result');
+const descriptionText = document.getElementById('descriptionText');
+const inputTextbox = document.getElementById('textInput');
+const dataTable = document.getElementById('dataTable');
+const displayText = document.getElementById('displayText');
+const decodeButton = document.getElementById('decodeButton');
+
+let zwjEmojis = [];
+let emojiData = new Map();
+
+window.onload = loadAllEmojis();
+loadSystemTheme();
+
+inputTextbox.addEventListener('input', (event) => {
+    decodeButton.disabled = !event.target.value;
+});
 
 function loadSystemTheme() {
     const prefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
     document.documentElement.setAttribute('data-theme', prefersDark ? 'dark' : 'light');
     themeToggle.checked = prefersDark;
 }
-
-loadSystemTheme();
   
 themeToggle.addEventListener('change', function() {
   const theme = this.checked ? 'dark' : 'light';
   document.documentElement.setAttribute('data-theme', theme);
 });
-
-let zwjEmojis = [];
-let emojiData = new Map();
 
 async function loadEmojiData() {
     if (emojiData.size > 0) return;
@@ -52,36 +63,32 @@ async function loadZwjEmojis() {
     }).filter(zwjEmoji => zwjEmoji !== null);
 }
 
-async function randomEmoji() {
-    await loadZwjEmojis();
-    const randomIndex = Math.floor(Math.random() * zwjEmojis.length);
-    const zwjEmoji = zwjEmojis[randomIndex];
-    document.getElementById('textInput').value = zwjEmoji;
-    copyText();
-}
-
 async function loadAllEmojis() {
     loadZwjEmojis();
     loadEmojiData();
 }
 
-window.onload = loadAllEmojis();
+function randomEmoji() {
+    const randomIndex = Math.floor(Math.random() * zwjEmojis.length);
+    const zwjEmoji = zwjEmojis[randomIndex];
+
+    inputTextbox.value = zwjEmoji;
+    inputTextbox.dispatchEvent(new Event('input'));
+
+    copyText();
+}
 
 function copyText() {
-    let inputText = document.getElementById('textInput').value;
-    document.getElementById('displayText').innerText = "Your Text: " + inputText;
+    const inputText = inputTextbox.value;
     if (emojiData.has(inputText) || zwjEmojis.includes(inputText)){
-        document.getElementById('displayText').innerText = "Your Emoji: " + inputText;
+        displayText.innerHTML = `<span class="font-semibold">Your Emoji:</span><br> <span class="text-xl">${inputText}</span>`;
+    } else {
+        displayText.innerHTML = `<span class="font-semibold">Your Text:</span><br> ${inputText}`;
     }
 
-    const resultElement = document.getElementById('result');
-    const debugText = document.getElementById('debugText');
-
-    let textUniCode = getUniCode(inputText);
     let analyzedEmoji = analyzeEmoji(inputText);
 
-    //debugText.innerText = `"Debug: ${inputText}" ${isTextEmoji} an emoji.\nLength: ${inputText.length}.\nUnicode: ${textUniCode}\n${JSON.stringify(emojiData)}`;
-    debugText.innerText = `Debug: ${textUniCode}`;
+    descriptionText.innerHTML = `<span class="font-semibold">Description:</span><br> ${emojiData.get(inputText) || 'no description available'}`;
 
     let count = 1;
     resultElement.innerHTML = "";
@@ -90,32 +97,33 @@ function copyText() {
         if (getUniCode(value) === 'U+200D') {
             description = `invisible joiner (ZWJ)
             <a href="https://en.wikipedia.org/wiki/Zero-width_joiner" target="_blank">
-                <svg xmlns="http://www.w3.org/2000/svg" width="1em" height="1em" viewBox="0 0 24 24"><g fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"><circle cx="12" cy="12" r="10"/><path d="M12 16v-4m0-4h.01"/></g></svg>
+                <svg xmlns="http://www.w3.org/2000/svg" width="1rem" height="1rem" viewBox="0 0 24 24"><g fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"><circle cx="12" cy="12" r="10"/><path d="M12 16v-4m0-4h.01"/></g></svg>
             </a>`;
         } else if (getUniCode(value) === 'U+FE0F') {
             description = `emoji display modifier (VS16)
             <a href="https://en.wikipedia.org/wiki/Variation_Selectors_(Unicode_block)" target="_blank">
-                <svg xmlns="http://www.w3.org/2000/svg" width="1em" height="1em" viewBox="0 0 24 24"><g fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"><circle cx="12" cy="12" r="10"/><path d="M12 16v-4m0-4h.01"/></g></svg>
+                <svg xmlns="http://www.w3.org/2000/svg" width="1rem" height="1rem" viewBox="0 0 24 24"><g fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"><circle cx="12" cy="12" r="10"/><path d="M12 16v-4m0-4h.01"/></g></svg>
             </a>`;
         } else if (getUniCode(value) === 'U+FE0E') {
             description = `text display modifier (VS15)
             <a href="https://en.wikipedia.org/wiki/Variation_Selectors_(Unicode_block)" target="_blank">
-                <svg xmlns="http://www.w3.org/2000/svg" width="1em" height="1em" viewBox="0 0 24 24"><g fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"><circle cx="12" cy="12" r="10"/><path d="M12 16v-4m0-4h.01"/></g></svg>
+                <svg xmlns="http://www.w3.org/2000/svg" width="1rem" height="1rem" viewBox="0 0 24 24"><g fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"><circle cx="12" cy="12" r="10"/><path d="M12 16v-4m0-4h.01"/></g></svg>
             </a>`;
         }
 
         description = description.charAt(0).toUpperCase() + description.slice(1);
-        console.log(`${key}: ${value} - ${description}`);
+        //console.log(`${key}: ${value} - ${description}`);
 
         resultElement.innerHTML += `<tr>
                 <th>${key}</th>
-                <th>${value}</th>
+                <th class="text-lg">${value}</th>
                 <td>${getUniCode(value)}</td>
-                <td class="flex gap-2">${description}</td>
+                <td class="flex gap-2 items-center">${description}</td>
               <tr>`
         count++;
     }
 
+    dataTable.classList.remove('hidden');
 }
 
 function getUniCode(text) {
