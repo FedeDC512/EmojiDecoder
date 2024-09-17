@@ -88,7 +88,9 @@ function copyText() {
 
     let analyzedEmoji = analyzeEmoji(inputText);
 
-    descriptionText.innerHTML = `<span class="font-semibold">Description:</span><br> ${emojiData.get(inputText) || 'no description available'}`;
+    let textDescription = emojiData.get(inputText) || 'no description available';
+    textDescription = textDescription.charAt(0).toUpperCase() + textDescription.slice(1);
+    descriptionText.innerHTML = `<span class="font-semibold">Description:</span><br> ${textDescription}`;
 
     let count = 1;
     resultElement.innerHTML = "";
