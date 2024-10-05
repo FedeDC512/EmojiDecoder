@@ -7,7 +7,7 @@
 
 ## Features ✨
 
-- **Emoji Decoding**: Users can input any emoji into a text field, and EmojiDecoder will provide the exact Unicode representation and a clear description of the emoji from the Unicode Consortium's emoji data files. 📜
+- **Emoji Decoding**: Users can input any emoji into a text field, and EmojiDecoder will provide the exact Unicode representation and a clear description of the emoji from the Unicode Consortium's emoji data files. 🎨
 
 - **Handling ZWJ Sequences and Their Components**: **Zero Width Joiner (ZWJ)** sequences are special combinations of emojis that are displayed as a single, composed emoji (such as family or flag emojis). EmojiDecoder supports the decoding of these complex sequences into their individual components and descriptions, allowing users to explore how each part contributes to the final composed emoji. 🥳
 
