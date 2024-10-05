@@ -2,6 +2,9 @@
 
 **EmojiDecoder** is a web app that allows users to decode emojis into their corresponding Unicode representations and descriptions. It also features a random emoji generator for sequences using ZWJ (Zero Width Joiner) and supports theme switching between light and dark modes. 🎉
 
+[Visit EmojiDecoder Website](https://fededc512.github.io/EmojiDecoder/)
+
+
 ## Features ✨
 
 - **Emoji Decoding**: Users can input any emoji into a text field, and EmojiDecoder will provide the exact Unicode representation and a clear description of the emoji from the Unicode Consortium's emoji data files. 📜
